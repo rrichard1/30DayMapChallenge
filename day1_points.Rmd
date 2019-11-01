@@ -1,0 +1,72 @@
+# Pre-K Locations by Program Type
+## School Year 2019-2020
+
+```{r ipsum_setup, message=FALSE, warning=FALSE, cache=FALSE, echo=FALSE}
+library(hrbrthemes)
+library(tidyverse) # For data wrangling; also loads ggplot2T
+library(rio)
+library(sf) # For reading, writing and working with spatial objects (Vector data)
+library(tmap)# For creating maps
+library(tmaptools)# For reading and processing spatial data related to tmap
+library(leaflet) # for interactive mapping
+library(mapview)# another option for interactive mapping
+
+knitr::opts_chunk$set(fig.retina = 2)
+
+update_geom_font_defaults(font_rc)
+
+# Dark color palettes
+dkbl <- c("#F0F0F0", "#000033")
+dkrd <- c("#F0F0F0", "#290018")
+dkgr <- c("#F0F0F0", "#002911")
+col5 <- c("#332288","#DDCC77", "#88CCEE", "#117733", "#CC6677")
+tlr <- c('#009392', '#72aaa1', '#b1c7b3', '#f1eac8', '#e5b9ad', '#d98994', '#d0587e')
+
+# Load boundary files
+load("georgia_boundaries.rdata")
+
+dfPreK <- import('prek_sites_geocoded.csv')
+
+PreKloc <- dfPreK %>%
+	separate("addrlocat",into = c("lat","lon"), sep = ",",remove = T) %>%
+	mutate_at(vars(lat,lon), list(~as.numeric(.)))
+
+# Convert to spatial data
+prek_pts <-
+  st_as_sf(PreKloc,
+           coords = c("lon", "lat") ,
+           crs = 4326)
+
+```
+
+```{r echo=FALSE, fig.height=9, fig.show='hold', fig.width=12, message=FALSE, warning=FALSE}
+# Map Pre-K Locations
+tmap_mode("view")
+tm_shape(ga_counties) +
+	tm_polygons(col = "#FFFFFF", lwd = 1.0, id = "name", alpha = 0.01) +
+	tm_borders(col = "#373737", lwd = 1.0) +
+	tm_shape(ga_sch_dists,) +
+	tm_borders(col = "#666666", lwd = 0.5) +
+	tm_shape(prek_pts) +
+	tm_dots(
+		col = "Program_Ty",
+		id = "Location",
+		title = "Pre-K Program Type",
+		palette =  col5,
+		size  = 0.15,
+		border.col = '#999999',
+		scale = 0.85,
+		popup.vars = c(
+			"Facility:" = "Location",
+			"Type:" = "Program_Ty",
+			"Street:" = "Address",
+			"City:" = "City",
+			"County" = "County",
+			"QR Rating::" = "QR_Rating"
+		)
+	) +
+	tm_basemap(leaflet::providers$CartoDB.DarkMatter)
+```
+
+#### Created By: [Roland Richard](https://twitter.com/rorich)
+#### Data Source: [Georgia Department of Early Care and Learning ](http://families.decal.ga.gov/Provider/Data)

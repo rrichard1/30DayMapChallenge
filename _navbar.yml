@@ -1,0 +1,7 @@
+title: "30-day Map Challenge"
+type: inverse
+left:
+- text: "Maps"
+  menu:
+  - text: "Day 1: Points"
+    href: day1_points.html

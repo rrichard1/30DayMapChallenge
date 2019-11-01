@@ -1,0 +1,9 @@
+---
+title: "About the author"
+output: 
+  html_document:
+    toc: FALSE
+---
+If you want to learn more about me, you can visit [this website](https://rrichard1.github.io/SSPI_Tools/).
+
+
