@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>day2_lines.utf8.md</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  { color: #cccccc; background-color: #303030; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ffcfaf; } /* Alert */
+code span.an { color: #7f9f7f; font-weight: bold; } /* Annotation */
+code span.at { } /* Attribute */
+code span.bn { color: #dca3a3; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #f0dfaf; } /* ControlFlow */
+code span.ch { color: #dca3a3; } /* Char */
+code span.cn { color: #dca3a3; font-weight: bold; } /* Constant */
+code span.co { color: #7f9f7f; } /* Comment */
+code span.cv { color: #7f9f7f; font-weight: bold; } /* CommentVar */
+code span.do { color: #7f9f7f; } /* Documentation */
+code span.dt { color: #dfdfbf; } /* DataType */
+code span.dv { color: #dcdccc; } /* DecVal */
+code span.er { color: #c3bf9f; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #c0bed1; } /* Float */
+code span.fu { color: #efef8f; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #7f9f7f; font-weight: bold; } /* Information */
+code span.kw { color: #f0dfaf; } /* Keyword */
+code span.op { color: #f0efd0; } /* Operator */
+code span.ot { color: #efef8f; } /* Other */
+code span.pp { color: #ffcfaf; font-weight: bold; } /* Preprocessor */
+code span.sc { color: #dca3a3; } /* SpecialChar */
+code span.ss { color: #cc9393; } /* SpecialString */
+code span.st { color: #cc9393; } /* String */
+code span.va { } /* Variable */
+code span.vs { color: #cc9393; } /* VerbatimString */
+code span.wa { color: #7f9f7f; font-weight: bold; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="customstyles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">30-day Map Challenge</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Maps
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="day1_points.html">Day 1: Points</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<div id="daymapchallenge" class="section level1">
+<h1><code>#30DayMapChallenge</code></h1>
+<div id="day-2-lines" class="section level2">
+<h2>Day 2 : Lines</h2>
+<p>I used R to recreate the map titled <strong>The Ridiculousness Of Conference Tournament Locations, In 6 Maps</strong> which was originally created by Neil Paine and Ella Koeze from <a href="https://fivethirtyeight.com/features/the-ridiculousness-of-conference-tournament-locations-in-6-maps/"><strong>FiveThirtyEight</strong></a>. All of the code used to produce this map is below.</p>
+</div>
+<div id="data-query" class="section level2">
+<h2>Data Query</h2>
+<p>First data were obtained from the public NCAA database using bigquery</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">library</span>(bigrquery)</a>
+<a class="sourceLine" id="cb1-2" title="2"><span class="kw">library</span>(DBI)</a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw">library</span>(ggmap)</a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb1-6" title="6"></a>
+<a class="sourceLine" id="cb1-7" title="7"></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co"># Query NCAA Database -----------------------------------------------------</span></a>
+<a class="sourceLine" id="cb1-9" title="9"></a>
+<a class="sourceLine" id="cb1-10" title="10"><span class="co"># Project ID</span></a>
+<a class="sourceLine" id="cb1-11" title="11">mbb &lt;-<span class="st"> &quot;xxxx-xx-xxxx&quot;</span></a>
+<a class="sourceLine" id="cb1-12" title="12"></a>
+<a class="sourceLine" id="cb1-13" title="13">con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(</a>
+<a class="sourceLine" id="cb1-14" title="14">  bigrquery<span class="op">::</span><span class="kw">bigquery</span>(),</a>
+<a class="sourceLine" id="cb1-15" title="15">  <span class="dt">project =</span> <span class="st">&quot;bigquery-public-data&quot;</span>,</a>
+<a class="sourceLine" id="cb1-16" title="16">  <span class="dt">dataset =</span> <span class="st">&quot;ncaa_basketball&quot;</span>,</a>
+<a class="sourceLine" id="cb1-17" title="17">  <span class="dt">billing =</span> mbb</a>
+<a class="sourceLine" id="cb1-18" title="18">)</a>
+<a class="sourceLine" id="cb1-19" title="19"></a>
+<a class="sourceLine" id="cb1-20" title="20"></a>
+<a class="sourceLine" id="cb1-21" title="21"><span class="co"># Load All Division I Men&#39;s Basketball Teams</span></a>
+<a class="sourceLine" id="cb1-22" title="22">ncaa_mbb &lt;-<span class="st"> </span><span class="kw">dbReadTable</span>(con,<span class="st">&quot;mbb_teams&quot;</span>)</a>
+<a class="sourceLine" id="cb1-23" title="23"></a>
+<a class="sourceLine" id="cb1-24" title="24"></a>
+<a class="sourceLine" id="cb1-25" title="25"></a>
+<a class="sourceLine" id="cb1-26" title="26"><span class="co"># Filter Power 5 (and Big East) Conferences</span></a>
+<a class="sourceLine" id="cb1-27" title="27">power6 &lt;-<span class="st"> </span>ncaa_mbb <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(conf_alias <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ACC&quot;</span>,<span class="st">&quot;BIG10&quot;</span>,<span class="st">&quot;BIG12&quot;</span>,<span class="st">&quot;BIGEAST&quot;</span>,<span class="st">&quot;PAC12&quot;</span>,<span class="st">&quot;SEC&quot;</span>))</a>
+<a class="sourceLine" id="cb1-28" title="28"></a>
+<a class="sourceLine" id="cb1-29" title="29"><span class="co"># Select Addresses of Power 6 Program Venues for Geocoding ---------------------</span></a>
+<a class="sourceLine" id="cb1-30" title="30"></a>
+<a class="sourceLine" id="cb1-31" title="31"><span class="co"># Register Google Geocoder API Key</span></a>
+<a class="sourceLine" id="cb1-32" title="32"><span class="kw">register_google</span>(<span class="dt">key =</span> <span class="st">&#39;ENTER_YOUR_KEY_HERE&#39;</span>)</a>
+<a class="sourceLine" id="cb1-33" title="33"></a>
+<a class="sourceLine" id="cb1-34" title="34">power6Geo &lt;-<span class="st"> </span>power6 <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-35" title="35"><span class="st">  </span><span class="kw">unite</span>(<span class="dt">col =</span> <span class="st">&#39;addresses&#39;</span>, <span class="kw">c</span>(venue_address,venue_city,venue_state),<span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>,<span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-36" title="36"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="st">&quot;school&quot;</span>)</a>
+<a class="sourceLine" id="cb1-37" title="37"></a>
+<a class="sourceLine" id="cb1-38" title="38"></a>
+<a class="sourceLine" id="cb1-39" title="39"><span class="co"># loop through addresses to geocode lat/lon</span></a>
+<a class="sourceLine" id="cb1-40" title="40"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(power6Geo))</a>
+<a class="sourceLine" id="cb1-41" title="41">{</a>
+<a class="sourceLine" id="cb1-42" title="42">  <span class="co"># Print(&quot;Working...&quot;)</span></a>
+<a class="sourceLine" id="cb1-43" title="43">  result &lt;-<span class="st"> </span><span class="kw">geocode</span>(power6Geo<span class="op">$</span>addresses[i], <span class="dt">output =</span> <span class="st">&quot;latlona&quot;</span>)</a>
+<a class="sourceLine" id="cb1-44" title="44">  power6Geo<span class="op">$</span>lon[i] &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(result[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb1-45" title="45">  power6Geo<span class="op">$</span>lat[i] &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(result[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb1-46" title="46">  power6Geo<span class="op">$</span>geoAddress[i] &lt;-<span class="st"> </span><span class="kw">as.character</span>(result[<span class="dv">3</span>])</a>
+<a class="sourceLine" id="cb1-47" title="47">}</a>
+<a class="sourceLine" id="cb1-48" title="48"></a>
+<a class="sourceLine" id="cb1-49" title="49"><span class="co"># Geocode Conference Conference Geographic Centers, Suggested, and Actual Tournament Locations</span></a>
+<a class="sourceLine" id="cb1-50" title="50">conf_loc &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;conf_tourn_locations.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb1-51" title="51"></a>
+<a class="sourceLine" id="cb1-52" title="52"><span class="co"># rename columns to bind with Power6 data</span></a>
+<a class="sourceLine" id="cb1-53" title="53">confGeo &lt;-<span class="st"> </span>conf_loc <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-54" title="54"><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span><span class="kw">c</span>(sugg_dist, tourney_dist)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-55" title="55"><span class="st">  </span><span class="kw">gather</span>(alias, city, <span class="op">-</span>conf_alias) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-56" title="56"><span class="st">  </span><span class="co"># create type variable for easier grouping in ggplot</span></a>
+<a class="sourceLine" id="cb1-57" title="57"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb1-58" title="58">    <span class="dt">type =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb1-59" title="59">      alias <span class="op">==</span><span class="st"> &quot;geog_center&quot;</span> <span class="op">~</span><span class="st"> &quot;center&quot;</span>,</a>
+<a class="sourceLine" id="cb1-60" title="60">      alias <span class="op">==</span><span class="st"> &quot;tourney_loc&quot;</span> <span class="op">~</span><span class="st"> &quot;tourney&quot;</span>,</a>
+<a class="sourceLine" id="cb1-61" title="61">      alias <span class="op">==</span><span class="st"> &quot;sugg_loc&quot;</span> <span class="op">~</span><span class="st"> &quot;suggested&quot;</span></a>
+<a class="sourceLine" id="cb1-62" title="62">    )</a>
+<a class="sourceLine" id="cb1-63" title="63">  )</a>
+<a class="sourceLine" id="cb1-64" title="64"></a>
+<a class="sourceLine" id="cb1-65" title="65"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="kw">nrow</span>(confGeo))</a>
+<a class="sourceLine" id="cb1-66" title="66">{</a>
+<a class="sourceLine" id="cb1-67" title="67">  <span class="co"># Print(&quot;Working...&quot;)</span></a>
+<a class="sourceLine" id="cb1-68" title="68">  result &lt;-<span class="st"> </span><span class="kw">geocode</span>(confGeo<span class="op">$</span>city[i], <span class="dt">output =</span> <span class="st">&quot;latlon&quot;</span>)</a>
+<a class="sourceLine" id="cb1-69" title="69">  confGeo<span class="op">$</span>lon[i] &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(result[<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb1-70" title="70">  confGeo<span class="op">$</span>lat[i] &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(result[<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb1-71" title="71">}</a>
+<a class="sourceLine" id="cb1-72" title="72"></a>
+<a class="sourceLine" id="cb1-73" title="73">confGeo &lt;-<span class="st"> </span>confGeo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(type <span class="op">!=</span><span class="st"> &#39;suggested&#39;</span>)</a>
+<a class="sourceLine" id="cb1-74" title="74"></a>
+<a class="sourceLine" id="cb1-75" title="75"><span class="co"># Bind Power6 School geographic data with conference geographic data</span></a>
+<a class="sourceLine" id="cb1-76" title="76"></a>
+<a class="sourceLine" id="cb1-77" title="77">typ &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">`</span><span class="dt">1</span><span class="st">`</span> =<span class="st"> &quot;school&quot;</span>, <span class="st">`</span><span class="dt">2</span><span class="st">`</span> =<span class="st"> &quot;center&quot;</span>, <span class="st">`</span><span class="dt">3</span><span class="st">`</span> =<span class="st"> &quot;tourney&quot;</span>)</a>
+<a class="sourceLine" id="cb1-78" title="78">conf &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="st">`</span><span class="dt">1</span><span class="st">`</span> =<span class="st"> &quot;ACC&quot;</span>, <span class="st">`</span><span class="dt">2</span><span class="st">`</span> =<span class="st"> &quot;BIG10&quot;</span>, <span class="st">`</span><span class="dt">3</span><span class="st">`</span> =<span class="st"> &quot;BIGEAST&quot;</span>, <span class="st">`</span><span class="dt">4</span><span class="st">`</span> =<span class="st"> &quot;PAC12&quot;</span>, <span class="st">`</span><span class="dt">5</span><span class="st">`</span> =<span class="st">&quot;SEC&quot;</span>,<span class="st">`</span><span class="dt">6</span><span class="st">`</span> =<span class="st"> &quot;BIG12&quot;</span>)</a>
+<a class="sourceLine" id="cb1-79" title="79"></a>
+<a class="sourceLine" id="cb1-80" title="80">power6sf &lt;-<span class="st"> </span>power6Geo <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-81" title="81"><span class="st">  </span><span class="kw">select</span>(conf_alias, type,alias,venue_city,venue_state,lon,lat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-82" title="82"><span class="st">  </span><span class="kw">unite</span>(<span class="st">&#39;city&#39;</span>,<span class="kw">c</span>(venue_city,venue_state),<span class="dt">sep =</span> <span class="st">&quot;, &quot;</span>,<span class="dt">remove =</span> T) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-83" title="83"><span class="st">  </span><span class="kw">bind_rows</span>(confGeo) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-84" title="84"><span class="st">  </span><span class="kw">st_as_sf</span>( <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&#39;lon&#39;</span>,<span class="st">&#39;lat&#39;</span>),<span class="dt">agr =</span> <span class="st">&#39;constant&#39;</span>,<span class="dt">crs =</span> <span class="dv">4326</span>, <span class="dt">remove =</span> <span class="ot">FALSE</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-85" title="85"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">type =</span> <span class="kw">recode_factor</span>(type,<span class="op">!!!</span>typ),</a>
+<a class="sourceLine" id="cb1-86" title="86">         <span class="dt">conf_alias =</span> <span class="kw">recode_factor</span>(conf_alias, <span class="op">!!!</span>conf)</a>
+<a class="sourceLine" id="cb1-87" title="87">         ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-88" title="88"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">conf_name =</span> <span class="kw">factor</span>(conf_alias,</a>
+<a class="sourceLine" id="cb1-89" title="89">                            <span class="dt">labels =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb1-90" title="90">                              <span class="st">&quot;Atlantic Coast Conference:</span><span class="ch">\n</span><span class="st">Brooklyn&quot;</span>,</a>
+<a class="sourceLine" id="cb1-91" title="91">                              <span class="st">&quot;Big Ten:</span><span class="ch">\n</span><span class="st">NYC&quot;</span>,</a>
+<a class="sourceLine" id="cb1-92" title="92">                              <span class="st">&quot;Big East:</span><span class="ch">\n</span><span class="st">NYC&quot;</span>,</a>
+<a class="sourceLine" id="cb1-93" title="93">                              <span class="st">&quot;Pacific 12:</span><span class="ch">\n</span><span class="st">Las Vegas&quot;</span>,</a>
+<a class="sourceLine" id="cb1-94" title="94">                              <span class="st">&quot;Southeastern Conference:</span><span class="ch">\n</span><span class="st">St. Louis&quot;</span>,</a>
+<a class="sourceLine" id="cb1-95" title="95">                              <span class="st">&quot;Big 12:</span><span class="ch">\n</span><span class="st">Kansas City&quot;</span></a>
+<a class="sourceLine" id="cb1-96" title="96">                            ))</a>
+<a class="sourceLine" id="cb1-97" title="97">  )</a>
+<a class="sourceLine" id="cb1-98" title="98"></a>
+<a class="sourceLine" id="cb1-99" title="99">power6sf &lt;-<span class="st"> </span>power6sf <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-100" title="100"><span class="st">  </span><span class="kw">separate</span>(</a>
+<a class="sourceLine" id="cb1-101" title="101">    conference,</a>
+<a class="sourceLine" id="cb1-102" title="102">    <span class="dt">into =</span> <span class="kw">c</span>(<span class="st">&#39;conf_nm&#39;</span>, <span class="st">&#39;tourn_loc&#39;</span>),</a>
+<a class="sourceLine" id="cb1-103" title="103">    <span class="dt">sep =</span> <span class="st">&#39;:</span><span class="ch">\n</span><span class="st">&#39;</span>,</a>
+<a class="sourceLine" id="cb1-104" title="104">    <span class="dt">remove =</span> F</a>
+<a class="sourceLine" id="cb1-105" title="105">  )  <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-106" title="106"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">conf_nm =</span> <span class="kw">factor</span>(</a>
+<a class="sourceLine" id="cb1-107" title="107">    conf_alias,</a>
+<a class="sourceLine" id="cb1-108" title="108">    <span class="dt">labels =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb1-109" title="109">      <span class="st">&quot;Atlantic Coast Conference&quot;</span>,</a>
+<a class="sourceLine" id="cb1-110" title="110">      <span class="st">&quot;Big Ten&quot;</span>,</a>
+<a class="sourceLine" id="cb1-111" title="111">      <span class="st">&quot;Big East&quot;</span>,</a>
+<a class="sourceLine" id="cb1-112" title="112">      <span class="st">&quot;Pacific 12&quot;</span>,</a>
+<a class="sourceLine" id="cb1-113" title="113">      <span class="st">&quot;Southeastern Conference&quot;</span>,</a>
+<a class="sourceLine" id="cb1-114" title="114">      <span class="st">&quot;Big 12&quot;</span></a>
+<a class="sourceLine" id="cb1-115" title="115">    )</a>
+<a class="sourceLine" id="cb1-116" title="116">  ))</a>
+<a class="sourceLine" id="cb1-117" title="117"></a>
+<a class="sourceLine" id="cb1-118" title="118"></a>
+<a class="sourceLine" id="cb1-119" title="119"><span class="co"># save prepared data</span></a>
+<a class="sourceLine" id="cb1-120" title="120"><span class="kw">write_rds</span>(ncaa_mbb,<span class="st">&quot;ncaa_mbb_all_d1.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb1-121" title="121"><span class="kw">write_rds</span>(power6, <span class="st">&quot;ncaa_mbb_power6.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb1-122" title="122"><span class="kw">write_rds</span>(power6sf,<span class="st">&quot;ncaa_mbb_power6_geocoded.rds&quot;</span>)</a></code></pre></div>
+</div>
+<div id="map-creation" class="section level2">
+<h2>Map Creation</h2>
+<p>Next I used <code>ggplot</code> ,<code>sf</code> , among other packages to produce the map.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="co">################################################################################</span></a>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co">## Project: Richard_NCAA_BB_Map</span></a>
+<a class="sourceLine" id="cb2-3" title="3"><span class="co">## Script purpose: Replicate FiveThirtyEight NCAA College Basketball Map</span></a>
+<a class="sourceLine" id="cb2-4" title="4"><span class="co">## Date: 26-Sep-2019</span></a>
+<a class="sourceLine" id="cb2-5" title="5"><span class="co">## Author:Roland Richard</span></a>
+<a class="sourceLine" id="cb2-6" title="6"><span class="co">################################################################################</span></a>
+<a class="sourceLine" id="cb2-7" title="7"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb2-8" title="8"><span class="kw">library</span>(rio)</a>
+<a class="sourceLine" id="cb2-9" title="9"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb2-10" title="10"><span class="kw">library</span>(lwgeom)</a>
+<a class="sourceLine" id="cb2-11" title="11"><span class="kw">library</span>(spData)</a>
+<a class="sourceLine" id="cb2-12" title="12"><span class="kw">library</span>(tigris)</a>
+<a class="sourceLine" id="cb2-13" title="13"><span class="kw">library</span>(grid)</a>
+<a class="sourceLine" id="cb2-14" title="14"><span class="kw">library</span>(extrafont)</a>
+<a class="sourceLine" id="cb2-15" title="15"><span class="kw">library</span>(ggrepel)</a>
+<a class="sourceLine" id="cb2-16" title="16"><span class="kw">options</span>(<span class="dt">tigris_use_cache =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-17" title="17"></a>
+<a class="sourceLine" id="cb2-18" title="18"><span class="co"># load Data prepared in &quot;code/Richard_NCAA_BB_Data_Query_Prep.R&quot;</span></a>
+<a class="sourceLine" id="cb2-19" title="19">conf_loc &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;conf_tourn_locations.csv&quot;</span>)</a>
+<a class="sourceLine" id="cb2-20" title="20">ncaa_mbb &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;ncaa_mbb_all_d1.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb2-21" title="21">power6 &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;ncaa_mbb_power6.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb2-22" title="22">power6Geo &lt;-<span class="st"> </span><span class="kw">import</span>(<span class="st">&quot;ncaa_mbb_power6_geocoded.rds&quot;</span>)</a>
+<a class="sourceLine" id="cb2-23" title="23"></a>
+<a class="sourceLine" id="cb2-24" title="24"><span class="co"># Function to create lines using great circles</span></a>
+<a class="sourceLine" id="cb2-25" title="25">journeys_to_sf &lt;-<span class="st"> </span><span class="cf">function</span>(journeys_data,</a>
+<a class="sourceLine" id="cb2-26" title="26">                           <span class="dt">start_long =</span> start.long,</a>
+<a class="sourceLine" id="cb2-27" title="27">                           <span class="dt">start_lat =</span> start.lat,</a>
+<a class="sourceLine" id="cb2-28" title="28">                           <span class="dt">end_long =</span> end.long,</a>
+<a class="sourceLine" id="cb2-29" title="29">                           <span class="dt">end_lat =</span> end.lat) {</a>
+<a class="sourceLine" id="cb2-30" title="30">  quo_start_long &lt;-<span class="st"> </span><span class="kw">enquo</span>(start_long)</a>
+<a class="sourceLine" id="cb2-31" title="31">  quo_start_lat &lt;-<span class="st"> </span><span class="kw">enquo</span>(start_lat)</a>
+<a class="sourceLine" id="cb2-32" title="32">  quo_end_long &lt;-<span class="st"> </span><span class="kw">enquo</span>(end_long)</a>
+<a class="sourceLine" id="cb2-33" title="33">  quo_end_lat &lt;-<span class="st"> </span><span class="kw">enquo</span>(end_lat)</a>
+<a class="sourceLine" id="cb2-34" title="34"></a>
+<a class="sourceLine" id="cb2-35" title="35">  journeys_data <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-36" title="36"><span class="st">    </span><span class="kw">select</span>(</a>
+<a class="sourceLine" id="cb2-37" title="37">      <span class="op">!!</span><span class="st"> </span>quo_start_long,</a>
+<a class="sourceLine" id="cb2-38" title="38">      <span class="op">!!</span><span class="st"> </span>quo_start_lat,</a>
+<a class="sourceLine" id="cb2-39" title="39">      <span class="op">!!</span><span class="st"> </span>quo_end_long,</a>
+<a class="sourceLine" id="cb2-40" title="40">      <span class="op">!!</span><span class="st"> </span>quo_end_lat</a>
+<a class="sourceLine" id="cb2-41" title="41">    ) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-42" title="42"><span class="st">    </span><span class="kw">transpose</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-43" title="43"><span class="st">    </span><span class="kw">map</span>(<span class="op">~</span><span class="st"> </span><span class="kw">matrix</span>(<span class="kw">flatten_dbl</span>(.), <span class="dt">nrow =</span> <span class="dv">2</span>, <span class="dt">byrow =</span> <span class="ot">TRUE</span>)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-44" title="44"><span class="st">    </span><span class="kw">map</span>(st_linestring) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-45" title="45"><span class="st">    </span><span class="kw">st_sfc</span>(<span class="dt">crs =</span> <span class="dv">4326</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-46" title="46"><span class="st">    </span><span class="kw">st_sf</span>(<span class="dt">geometry =</span> .) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-47" title="47"><span class="st">    </span><span class="kw">bind_cols</span>(journeys_data) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-48" title="48"><span class="st">    </span><span class="kw">select</span>(<span class="kw">everything</span>(), geometry)</a>
+<a class="sourceLine" id="cb2-49" title="49">}</a>
+<a class="sourceLine" id="cb2-50" title="50"></a>
+<a class="sourceLine" id="cb2-51" title="51"><span class="co"># Load US State Map -------------------------------------------------------</span></a>
+<a class="sourceLine" id="cb2-52" title="52"></a>
+<a class="sourceLine" id="cb2-53" title="53"><span class="co"># US State abbreviations</span></a>
+<a class="sourceLine" id="cb2-54" title="54">us &lt;-<span class="st"> </span><span class="kw">unique</span>(fips_codes<span class="op">$</span>state)[<span class="kw">c</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">51</span>)]</a>
+<a class="sourceLine" id="cb2-55" title="55">cont &lt;-<span class="st"> </span>us[<span class="op">-</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">12</span>)]</a>
+<a class="sourceLine" id="cb2-56" title="56"></a>
+<a class="sourceLine" id="cb2-57" title="57"><span class="co"># US State Polygon file</span></a>
+<a class="sourceLine" id="cb2-58" title="58">states &lt;-<span class="st"> </span><span class="kw">states</span>(<span class="dt">cb =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb2-59" title="59"></a>
+<a class="sourceLine" id="cb2-60" title="60"><span class="co"># Extract Lower 48 States (No Power 6 Schools in AK or HI)</span></a>
+<a class="sourceLine" id="cb2-61" title="61">l48 &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(states) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-62" title="62"><span class="st">  </span><span class="kw">filter</span>(STUSPS <span class="op">%in%</span><span class="st"> </span>cont) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-63" title="63"><span class="st">  </span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="dv">2163</span>)</a>
+<a class="sourceLine" id="cb2-64" title="64"></a>
+<a class="sourceLine" id="cb2-65" title="65"></a>
+<a class="sourceLine" id="cb2-66" title="66"><span class="co"># Connect school points by conference</span></a>
+<a class="sourceLine" id="cb2-67" title="67"></a>
+<a class="sourceLine" id="cb2-68" title="68">conf_schls &lt;-<span class="st"> </span>power6Geo <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-69" title="69"><span class="st">  </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &quot;school&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-70" title="70"><span class="st">  </span><span class="kw">select</span>(conf_nm, alias,lon,lat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-71" title="71"><span class="st">  </span><span class="kw">st_drop_geometry</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-72" title="72"><span class="st">  </span><span class="kw">set_names</span>(<span class="kw">c</span>(<span class="st">&quot;conf_nm&quot;</span>, <span class="st">&quot;alias&quot;</span>, <span class="st">&quot;start.long&quot;</span>, <span class="st">&quot;start.lat&quot;</span>))</a>
+<a class="sourceLine" id="cb2-73" title="73"></a>
+<a class="sourceLine" id="cb2-74" title="74"></a>
+<a class="sourceLine" id="cb2-75" title="75">conf_ctrs &lt;-<span class="st"> </span>power6Geo <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-76" title="76"><span class="st">  </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &quot;center&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-77" title="77"><span class="st">  </span><span class="kw">select</span>(conf_nm,lon,lat) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-78" title="78"><span class="st">  </span><span class="kw">st_drop_geometry</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-79" title="79"><span class="st">  </span><span class="kw">set_names</span>(<span class="kw">c</span>(<span class="st">&quot;conf_nm&quot;</span>, <span class="st">&quot;end.long&quot;</span>, <span class="st">&quot;end.lat&quot;</span>))</a>
+<a class="sourceLine" id="cb2-80" title="80"></a>
+<a class="sourceLine" id="cb2-81" title="81">conf_hubs &lt;-</a>
+<a class="sourceLine" id="cb2-82" title="82"><span class="st">  </span><span class="kw">left_join</span>(conf_schls, conf_ctrs) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-83" title="83"><span class="st">  </span><span class="kw">journeys_to_sf</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-84" title="84"><span class="st">  </span><span class="kw">st_segmentize</span>(units<span class="op">::</span><span class="kw">set_units</span>(<span class="dv">100</span>, km))</a>
+<a class="sourceLine" id="cb2-85" title="85"></a>
+<a class="sourceLine" id="cb2-86" title="86"></a>
+<a class="sourceLine" id="cb2-87" title="87"><span class="co"># Create Conference footprint boundary</span></a>
+<a class="sourceLine" id="cb2-88" title="88">conf_poly &lt;-<span class="st"> </span>power6Geo <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-89" title="89"><span class="st">  </span><span class="kw">filter</span>(type <span class="op">!=</span><span class="st"> &quot;tourney&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-90" title="90"><span class="st">  </span><span class="kw">group_by</span>(conf_nm) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-91" title="91"><span class="st">  </span><span class="kw">summarise</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-92" title="92"><span class="st">  </span><span class="kw">st_cast</span>(<span class="st">&quot;POLYGON&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-93" title="93"><span class="st">  </span><span class="kw">st_convex_hull</span>() <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-94" title="94"><span class="st">  </span><span class="kw">st_transform</span>(<span class="dt">crs =</span> <span class="dv">2163</span>)</a>
+<a class="sourceLine" id="cb2-95" title="95"></a>
+<a class="sourceLine" id="cb2-96" title="96"><span class="co"># convert to buffer to surround points</span></a>
+<a class="sourceLine" id="cb2-97" title="97">conf_bounds &lt;-<span class="st"> </span>conf_poly <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">st_buffer</span>(<span class="dt">dist =</span> <span class="dv">35000</span>,<span class="dt">endCapStyle =</span> <span class="st">&quot;SQUARE&quot;</span>)</a>
+<a class="sourceLine" id="cb2-98" title="98"></a>
+<a class="sourceLine" id="cb2-99" title="99"><span class="co"># merge with conference location data for labels</span></a>
+<a class="sourceLine" id="cb2-100" title="100">tourn_labels &lt;-<span class="st">  </span>power6Geo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(type <span class="op">==</span><span class="st"> &#39;tourney&#39;</span>) </a>
+<a class="sourceLine" id="cb2-101" title="101">tourn_labels &lt;-<span class="st"> </span>tourn_labels <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb2-102" title="102"><span class="st">  </span><span class="kw">mutate</span>(</a>
+<a class="sourceLine" id="cb2-103" title="103">    <span class="dt">lab_x =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb2-104" title="104">      conf_alias <span class="op">==</span><span class="st"> &quot;BIG12&quot;</span> <span class="op">~</span><span class="st"> </span><span class="fl">-95.1</span>,</a>
+<a class="sourceLine" id="cb2-105" title="105">      conf_alias <span class="op">==</span><span class="st"> &quot;PAC12&quot;</span> <span class="op">~</span><span class="st"> </span><span class="fl">-114.1</span>,</a>
+<a class="sourceLine" id="cb2-106" title="106">      conf_alias <span class="op">==</span><span class="st"> &quot;SEC&quot;</span> <span class="op">~</span><span class="st"> </span><span class="fl">-95.1</span>,</a>
+<a class="sourceLine" id="cb2-107" title="107">      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="fl">-45.1</span></a>
+<a class="sourceLine" id="cb2-108" title="108">    ),</a>
+<a class="sourceLine" id="cb2-109" title="109">    <span class="dt">lab_y =</span> <span class="kw">case_when</span>(</a>
+<a class="sourceLine" id="cb2-110" title="110">      conf_alias <span class="op">==</span><span class="st"> &quot;BIG12&quot;</span> <span class="op">~</span><span class="st"> </span><span class="fl">40.1</span>,</a>
+<a class="sourceLine" id="cb2-111" title="111">      conf_alias <span class="op">==</span><span class="st"> &quot;PAC12&quot;</span> <span class="op">~</span><span class="st"> </span><span class="fl">37.1</span>,</a>
+<a class="sourceLine" id="cb2-112" title="112">      conf_alias <span class="op">==</span><span class="st"> &quot;SEC&quot;</span> <span class="op">~</span><span class="st"> </span><span class="fl">40.1</span>,</a>
+<a class="sourceLine" id="cb2-113" title="113">      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="fl">41.0</span>    )</a>
+<a class="sourceLine" id="cb2-114" title="114">  ) </a>
+<a class="sourceLine" id="cb2-115" title="115"></a>
+<a class="sourceLine" id="cb2-116" title="116"><span class="co"># Map Power 6 Programs and Conf. Tournament Locations ---------------------</span></a>
+<a class="sourceLine" id="cb2-117" title="117"></a>
+<a class="sourceLine" id="cb2-118" title="118">power6_map &lt;-<span class="st"> </span><span class="kw">ggplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-119" title="119"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb2-120" title="120">    <span class="dt">data =</span> l48,</a>
+<a class="sourceLine" id="cb2-121" title="121">    <span class="dt">fill =</span> <span class="st">&#39;#303030&#39;</span>,</a>
+<a class="sourceLine" id="cb2-122" title="122">    <span class="dt">color =</span> <span class="st">&#39;#E8E8E8&#39;</span>,</a>
+<a class="sourceLine" id="cb2-123" title="123">    <span class="dt">lwd =</span> <span class="fl">0.1</span></a>
+<a class="sourceLine" id="cb2-124" title="124">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-125" title="125"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb2-126" title="126">    <span class="dt">data =</span> conf_hubs,</a>
+<a class="sourceLine" id="cb2-127" title="127">    <span class="kw">aes</span>(<span class="dt">group =</span> conf_nm),</a>
+<a class="sourceLine" id="cb2-128" title="128">    <span class="dt">color =</span> <span class="st">&#39;#FF00FF&#39;</span>,</a>
+<a class="sourceLine" id="cb2-129" title="129">    <span class="dt">lwd =</span> <span class="dv">1</span>,</a>
+<a class="sourceLine" id="cb2-130" title="130">    <span class="dt">show.legend =</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb2-131" title="131">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-132" title="132"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb2-133" title="133">    <span class="dt">data =</span> power6Geo,</a>
+<a class="sourceLine" id="cb2-134" title="134">    <span class="kw">aes</span>(</a>
+<a class="sourceLine" id="cb2-135" title="135">      <span class="dt">fill =</span> type,</a>
+<a class="sourceLine" id="cb2-136" title="136">      <span class="dt">color =</span> type,</a>
+<a class="sourceLine" id="cb2-137" title="137">      <span class="dt">size =</span> type</a>
+<a class="sourceLine" id="cb2-138" title="138">    ),</a>
+<a class="sourceLine" id="cb2-139" title="139">    <span class="dt">shape =</span> <span class="dv">21</span>,</a>
+<a class="sourceLine" id="cb2-140" title="140">    <span class="dt">alpha =</span> <span class="fl">0.9</span>,</a>
+<a class="sourceLine" id="cb2-141" title="141">    <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span></a>
+<a class="sourceLine" id="cb2-142" title="142">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-143" title="143"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb2-144" title="144">    <span class="dt">data =</span> conf_bounds,</a>
+<a class="sourceLine" id="cb2-145" title="145">    <span class="kw">aes</span>(<span class="dt">group =</span> conf_nm),</a>
+<a class="sourceLine" id="cb2-146" title="146">    <span class="dt">fill =</span> <span class="st">&#39;#FF00CC&#39;</span>,</a>
+<a class="sourceLine" id="cb2-147" title="147">    <span class="dt">color =</span> <span class="st">&#39;#FFFFFF&#39;</span>,</a>
+<a class="sourceLine" id="cb2-148" title="148">    <span class="dt">alpha =</span> <span class="fl">0.20</span></a>
+<a class="sourceLine" id="cb2-149" title="149">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-150" title="150"><span class="st">  </span><span class="kw">geom_sf</span>(</a>
+<a class="sourceLine" id="cb2-151" title="151">    <span class="dt">data =</span> tourn_labels,</a>
+<a class="sourceLine" id="cb2-152" title="152">    <span class="dt">fill =</span> <span class="st">&quot;#3300FF&quot;</span>,</a>
+<a class="sourceLine" id="cb2-153" title="153">    <span class="dt">color =</span> <span class="st">&quot;#FFFFFF&quot;</span>,</a>
+<a class="sourceLine" id="cb2-154" title="154">    <span class="dt">size =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb2-155" title="155">    <span class="dt">shape =</span> <span class="dv">21</span>,</a>
+<a class="sourceLine" id="cb2-156" title="156">    <span class="dt">show.legend =</span> <span class="st">&quot;point&quot;</span></a>
+<a class="sourceLine" id="cb2-157" title="157">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-158" title="158"><span class="st"> </span><span class="kw">geom_label_repel</span>(</a>
+<a class="sourceLine" id="cb2-159" title="159">    <span class="dt">data  =</span></a>
+<a class="sourceLine" id="cb2-160" title="160">      tourn_labels <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(conf_alias <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;ACC&quot;</span>, <span class="st">&quot;BIG10&quot;</span>, <span class="st">&quot;BIGEAST&quot;</span>)),</a>
+<a class="sourceLine" id="cb2-161" title="161">    <span class="kw">aes</span>(<span class="dt">x =</span> lab_x, <span class="dt">y =</span> lab_y, <span class="dt">label =</span> tourn_loc,<span class="dt">geometry =</span> geometry),</a>
+<a class="sourceLine" id="cb2-162" title="162">    <span class="dt">stat =</span> <span class="st">&quot;sf_coordinates&quot;</span>,</a>
+<a class="sourceLine" id="cb2-163" title="163">    <span class="dt">nudge =</span> tourn_labels<span class="op">$</span>lab_x <span class="op">+</span><span class="st"> </span><span class="dv">15</span>, </a>
+<a class="sourceLine" id="cb2-164" title="164">    <span class="dt">force =</span> <span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb2-165" title="165">    <span class="dt">hjust =</span> <span class="dv">0</span>, </a>
+<a class="sourceLine" id="cb2-166" title="166">    <span class="dt">direction =</span> <span class="st">&quot;y&quot;</span>,</a>
+<a class="sourceLine" id="cb2-167" title="167">    <span class="dt">size =</span> <span class="fl">3.9</span>,</a>
+<a class="sourceLine" id="cb2-168" title="168">    <span class="dt">col =</span> <span class="st">&quot;#000000&quot;</span>,</a>
+<a class="sourceLine" id="cb2-169" title="169">    <span class="dt">fill =</span> <span class="st">&quot;#FFFFFF&quot;</span>,</a>
+<a class="sourceLine" id="cb2-170" title="170">    <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span></a>
+<a class="sourceLine" id="cb2-171" title="171">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-172" title="172"><span class="st">  </span><span class="kw">geom_label_repel</span>(</a>
+<a class="sourceLine" id="cb2-173" title="173">    <span class="dt">data  =</span></a>
+<a class="sourceLine" id="cb2-174" title="174">      tourn_labels <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">filter</span>(conf_alias <span class="op">%in%</span><span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;BIG12&quot;</span>, <span class="st">&quot;PAC12&quot;</span>, <span class="st">&quot;SEC&quot;</span>)),</a>
+<a class="sourceLine" id="cb2-175" title="175">    <span class="kw">aes</span>(</a>
+<a class="sourceLine" id="cb2-176" title="176">      <span class="dt">x =</span> lab_x,</a>
+<a class="sourceLine" id="cb2-177" title="177">      <span class="dt">y =</span> lab_y,</a>
+<a class="sourceLine" id="cb2-178" title="178">      <span class="dt">label =</span> tourn_loc,</a>
+<a class="sourceLine" id="cb2-179" title="179">      <span class="dt">geometry =</span> geometry</a>
+<a class="sourceLine" id="cb2-180" title="180">    ),</a>
+<a class="sourceLine" id="cb2-181" title="181">    <span class="dt">stat =</span> <span class="st">&quot;sf_coordinates&quot;</span>,</a>
+<a class="sourceLine" id="cb2-182" title="182">    <span class="dt">size =</span> <span class="fl">3.9</span>,</a>
+<a class="sourceLine" id="cb2-183" title="183">    <span class="dt">force =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb2-184" title="184">    <span class="dt">direction    =</span> <span class="st">&quot;both&quot;</span>,</a>
+<a class="sourceLine" id="cb2-185" title="185">    <span class="dt">col =</span> <span class="st">&quot;#000000&quot;</span>,</a>
+<a class="sourceLine" id="cb2-186" title="186">    <span class="dt">fill =</span> <span class="st">&quot;#FFFFFF&quot;</span>,</a>
+<a class="sourceLine" id="cb2-187" title="187">    <span class="dt">fontface =</span> <span class="st">&quot;bold&quot;</span></a>
+<a class="sourceLine" id="cb2-188" title="188">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-189" title="189"><span class="st">  </span><span class="kw">scale_fill_manual</span>(</a>
+<a class="sourceLine" id="cb2-190" title="190">    <span class="dt">name =</span> <span class="st">&quot;Location:&quot;</span>,</a>
+<a class="sourceLine" id="cb2-191" title="191">    <span class="dt">values =</span>  <span class="kw">c</span>(<span class="st">&quot;#FF00CC&quot;</span>,<span class="st">&quot;#FF00CC&quot;</span>,<span class="st">&quot;#3300FF&quot;</span>),</a>
+<a class="sourceLine" id="cb2-192" title="192">    <span class="dt">labels =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb2-193" title="193">      <span class="st">&quot;School&quot;</span>,</a>
+<a class="sourceLine" id="cb2-194" title="194">      <span class="st">&quot;Conference Geographic Center&quot;</span>,</a>
+<a class="sourceLine" id="cb2-195" title="195">      <span class="st">&quot;Conference Tournament Location&quot;</span></a>
+<a class="sourceLine" id="cb2-196" title="196">    )</a>
+<a class="sourceLine" id="cb2-197" title="197">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-198" title="198"><span class="st">  </span><span class="kw">scale_color_manual</span>(</a>
+<a class="sourceLine" id="cb2-199" title="199">    <span class="dt">name =</span> <span class="st">&quot;Location:&quot;</span>,</a>
+<a class="sourceLine" id="cb2-200" title="200">    <span class="dt">values =</span>  <span class="kw">c</span>(<span class="st">&quot;#FF00FF&quot;</span>,<span class="st">&quot;#FFFFFF&quot;</span>,<span class="st">&quot;#FFFFFF&quot;</span>),</a>
+<a class="sourceLine" id="cb2-201" title="201">    <span class="dt">labels =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb2-202" title="202">      <span class="st">&quot;School&quot;</span>,</a>
+<a class="sourceLine" id="cb2-203" title="203">      <span class="st">&quot;Conference Geographic Center&quot;</span>,</a>
+<a class="sourceLine" id="cb2-204" title="204">      <span class="st">&quot;Conference Tournament Location&quot;</span></a>
+<a class="sourceLine" id="cb2-205" title="205">    )</a>
+<a class="sourceLine" id="cb2-206" title="206">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-207" title="207"><span class="st">  </span><span class="kw">scale_size_manual</span>(</a>
+<a class="sourceLine" id="cb2-208" title="208">    <span class="dt">name =</span> <span class="st">&quot;Location:&quot;</span>,</a>
+<a class="sourceLine" id="cb2-209" title="209">    <span class="dt">values =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">6</span>, <span class="dv">5</span>),</a>
+<a class="sourceLine" id="cb2-210" title="210">    <span class="dt">labels =</span> <span class="kw">c</span>(</a>
+<a class="sourceLine" id="cb2-211" title="211">      <span class="st">&quot;School&quot;</span>,</a>
+<a class="sourceLine" id="cb2-212" title="212">      <span class="st">&quot;Conference Geographic Center&quot;</span>,</a>
+<a class="sourceLine" id="cb2-213" title="213">      <span class="st">&quot;Conference Tournament Location&quot;</span></a>
+<a class="sourceLine" id="cb2-214" title="214">    )</a>
+<a class="sourceLine" id="cb2-215" title="215">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-216" title="216"><span class="st">  </span><span class="kw">guides</span>(<span class="dt">shape =</span> <span class="ot">FALSE</span>,</a>
+<a class="sourceLine" id="cb2-217" title="217">         <span class="dt">colour =</span> <span class="kw">guide_legend</span>(<span class="dt">override.aes =</span> <span class="kw">list</span>(</a>
+<a class="sourceLine" id="cb2-218" title="218">           <span class="dt">shape =</span> <span class="dv">21</span>,</a>
+<a class="sourceLine" id="cb2-219" title="219">           <span class="dt">size =</span> <span class="dv">5</span>,</a>
+<a class="sourceLine" id="cb2-220" title="220">           <span class="dt">fill =</span> <span class="kw">c</span>(<span class="st">&quot;#FF00CC&quot;</span>, <span class="st">&quot;#FF00CC&quot;</span>, <span class="st">&quot;#3300FF&quot;</span>),</a>
+<a class="sourceLine" id="cb2-221" title="221">           <span class="dt">color =</span> <span class="kw">c</span>(<span class="st">&quot;#FF00FF&quot;</span>,<span class="st">&quot;#FFFFFF&quot;</span>,<span class="st">&quot;#FFFFFF&quot;</span>)</a>
+<a class="sourceLine" id="cb2-222" title="222">         ))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-223" title="223"><span class="st">  </span><span class="kw">coord_sf</span>(</a>
+<a class="sourceLine" id="cb2-224" title="224">    <span class="dt">crs =</span> <span class="kw">st_crs</span>(<span class="dv">2163</span>),</a>
+<a class="sourceLine" id="cb2-225" title="225">    <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2500000</span>, <span class="dv">2500000</span>),</a>
+<a class="sourceLine" id="cb2-226" title="226">    <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="op">-</span><span class="dv">2300000</span>, <span class="dv">730000</span>),</a>
+<a class="sourceLine" id="cb2-227" title="227">    <span class="dt">clip =</span> <span class="st">&quot;on&quot;</span></a>
+<a class="sourceLine" id="cb2-228" title="228">  ) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-229" title="229"><span class="st">  </span><span class="kw">facet_wrap</span>(.<span class="op">~</span>conf_nm,<span class="dt">nrow =</span> <span class="dv">2</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-230" title="230"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">&quot;Conference championships are far from the conference centers&quot;</span>,</a>
+<a class="sourceLine" id="cb2-231" title="231">       <span class="dt">subtitle =</span> <span class="st">&quot;Geographic centers of each of the top six men&#39;s college basketball conferences and the</span><span class="ch">\n</span><span class="st">locations of each of their 2018 conference tournaments</span><span class="ch">\n</span><span class="st">&quot;</span>,</a>
+<a class="sourceLine" id="cb2-232" title="232">       <span class="dt">caption =</span> <span class="st">&quot; Originally Created by FiveThirtyEight</span><span class="ch">\n</span><span class="st"> Recreated by Roland Richard (@rorich)</span><span class="ch">\n</span><span class="st">&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-233" title="233"><span class="st">  </span><span class="kw">theme_void</span>(<span class="dt">base_family =</span> <span class="st">&quot;Roboto Condensed&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb2-234" title="234"><span class="st">  </span><span class="kw">theme</span>(</a>
+<a class="sourceLine" id="cb2-235" title="235">    <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.5</span>, <span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb2-236" title="236">    <span class="dt">legend.justification =</span> <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">0</span>),</a>
+<a class="sourceLine" id="cb2-237" title="237">    <span class="dt">legend.direction =</span> <span class="st">&quot;horizontal&quot;</span>,</a>
+<a class="sourceLine" id="cb2-238" title="238">    <span class="dt">legend.box.just =</span> <span class="st">&quot;center&quot;</span>,</a>
+<a class="sourceLine" id="cb2-239" title="239">    <span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">hjust =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb2-240" title="240">    <span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb2-241" title="241">    <span class="dt">strip.background =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb2-242" title="242">    <span class="dt">strip.text.x =</span> <span class="kw">element_text</span>(<span class="dt">face =</span> <span class="st">&#39;bold&#39;</span>,  <span class="dt">size =</span> <span class="dv">16</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>, <span class="dt">vjust =</span> <span class="fl">0.5</span>,<span class="dt">margin =</span> <span class="kw">margin</span>(<span class="fl">0.5</span>,<span class="dv">0</span>,<span class="fl">0.5</span>,<span class="dv">0</span>, <span class="st">&quot;cm&quot;</span>)),</a>
+<a class="sourceLine" id="cb2-243" title="243">    <span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">24</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb2-244" title="244">    <span class="dt">plot.subtitle =</span> <span class="kw">element_text</span>(<span class="dt">color =</span> <span class="st">&quot;#454545&quot;</span>, <span class="dt">size =</span> <span class="dv">18</span>, <span class="dt">face =</span> <span class="st">&quot;plain&quot;</span>, <span class="dt">hjust =</span> <span class="fl">0.5</span>),</a>
+<a class="sourceLine" id="cb2-245" title="245">    <span class="dt">plot.caption =</span> <span class="kw">element_text</span>(<span class="dt">size =</span> <span class="dv">10</span>, <span class="dt">face =</span> <span class="st">&quot;plain&quot;</span>, <span class="dt">color =</span> <span class="st">&quot;#FFFFFF&quot;</span>, <span class="dt">hjust =</span> <span class="dv">0</span>, <span class="dt">vjust =</span> <span class="dv">1</span>),</a>
+<a class="sourceLine" id="cb2-246" title="246">    <span class="dt">panel.background =</span> <span class="kw">element_blank</span>(),</a>
+<a class="sourceLine" id="cb2-247" title="247">    <span class="dt">plot.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill =</span> <span class="st">&quot;#999999&quot;</span>)</a>
+<a class="sourceLine" id="cb2-248" title="248">  )</a></code></pre></div>
+</div>
+<div id="map" class="section level2">
+<h2>Map</h2>
+<p><img src="day2_lines_files/figure-html/map-1.png" width="1344" /></p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

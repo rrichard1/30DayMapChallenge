@@ -1,0 +1,7 @@
+conf_alias,geog_center,tourney_loc,loc_label,tourney_dist,sugg_loc,sugg_dist
+BIG12,"Gentryville, MO","Kansas City, MO",Kansas City,196.1,"Memphis, TN",175.3
+PAC12,"Cherry Creek, NV","Las Vegas, NV",Las Vegas,257.8,"Salt Lake City, UT",168.6
+SEC,"Hatley, MS","St. Louis, MO",St. Louis,336.2,"Memphis, TN",123.1
+ACC,"Reidsville, NC","Brooklyn, NY",Brooklyn,428.3,"Columbus, OH",73.7
+BIGEAST,"Melmore, OH","New York, NY",NYC,476.9,"Raleigh, NC",73.2
+BIG10,"Knox, IN","New York, NY",NYC,659.5,"Chicago, IL",65.4
