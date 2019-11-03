@@ -5,3 +5,5 @@ left:
   menu:
   - text: "Day 1: Points"
     href: day1_points.html
+  - text: "Day 2: Lines"
+    href: day2_lines.html
