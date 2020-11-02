@@ -1,0 +1,226 @@
+
+library(tidyverse)
+library(sf)
+library(osmdata)
+library(tigris)
+library(extrafont)
+library(ggtext)
+
+loadfonts(device = "win")
+
+dbx <- getbb("Donaldsonville,LA")
+
+min_lon <- -91.0395047
+max_lon <- -90.9625637
+min_lat <-  30.069647
+max_lat <-  30.113440
+
+dbx <- rbind(c(min_lon,max_lon),c(min_lat,max_lat))
+dimnames(dbx) <- list(c("x","y"),c("min","max"))
+
+available_tags("highway")
+
+highways <- dbx %>%
+  opq()%>%
+  add_osm_feature(key = "highway",
+                  value=c("motorway", "trunk",
+                          "primary","secondary",
+                          "tertiary","motorway_link",
+                          "trunk_link","primary_link",
+                          "secondary_link",
+                          "tertiary_link")) %>%
+  osmdata_sf()
+
+
+
+
+streets <- dbx %>%
+  opq()%>%
+  add_osm_feature(key = "highway",
+                  value = c("residential", "living_street",
+                            "service","unclassified",
+                            "pedestrian", "footway",
+                            "track","path")) %>%
+  osmdata_sf()
+
+# Add Geography
+
+parishes_LA <- counties(state="LA",cb=T,class="sf")
+parishes_LA <- st_crop(parishes_LA,
+                       xmin=min_lon,xmax=max_lon,
+                       ymin=min_lat,ymax=max_lat)
+
+
+# Add water
+get_water1 <- function(county_GEOID){
+  area_water("LA", county_GEOID, class = "sf")
+}
+
+water1 <- do.call(rbind, lapply(parishes_LA$COUNTYFP,get_water1))
+water1 <- st_crop(water1,
+                 xmin=min_lon,xmax=max_lon,
+                 ymin=min_lat,ymax=max_lat)
+
+get_water2 <- function(county_GEOID){
+  linear_water("LA", county_GEOID, class = "sf")
+}
+
+water2 <- do.call(rbind, lapply(parishes_LA$COUNTYFP,get_water2))
+water2 <- st_crop(water2,
+                  xmin=min_lon,xmax=max_lon,
+                  ymin=min_lat,ymax=max_lat)
+
+
+# carve out water polygons from parish polygon
+
+st_erase <- function(x, y) {
+  st_difference(x, st_union(y))
+}
+
+parishes_LA <- st_erase(parishes_LA,water1)
+
+
+# Route to school
+library(osrm)
+
+
+df_walk <- tibble(
+  place=c("home", "school"),
+  longitude=c(-90.9897943, -90.9857691),
+  latitude=c(30.1001923, 30.1028753))
+
+
+
+walk_sf <- st_as_sf(df_walk, coords = c("longitude", "latitude"),
+                    crs = 4326, agr = "constant")
+
+route <- osrmRoute(src = walk_sf[1,], dst = walk_sf[2,],
+                   overview = "full", returnclass = "sf")
+
+# add city boundary
+LA_places <- places(state = "LA")
+
+Dville <- LA_places %>% filter(NAME == "Donaldsonville")
+rgb(0.203,0.234,0.277)
+
+map_title <- tibble(label = c("<span style='font-family:sans-serif;font-size:56pt'><b><i>Donaldsonville, Louisiana</b></i></span><br><span style='font-family:sans-serif;font-size:28pt'> Estimated Population: 8,441 (2019)</span>"))
+
+map_credit <-
+  tibble(
+    label = c(
+"<span style='font-family:sans-serif;font-size:20pt'>
+#30DayMapChallenge Day2: Lines<br><br>
+<b>Created By:</b> Roland Richard (@rorich)</span>
+<p><span style='font-family:sans-serif;font-size:20pt'><b>Data Sources:</b><br>
+City of Donaldsonville (www.donaldsonville-la.gov) <span>&#9829;</span>;<br>
+U.S. Census Bureau 2019 TIGER/Line Shapefiles;<br>
+U.S. Census Bureau Annual Estimates of the Resident Population, 2019</span></p>
+"
+    )
+  )
+
+dville_map <- ggplot() +
+  geom_sf(
+    data = parishes_LA,
+    inherit.aes = FALSE,
+    lwd = 0.0,
+    fill = "#333333"
+  ) +
+  geom_sf(
+    data = Dville,
+    inherit.aes = F,
+    fill = "#666666A6",
+    color = NA
+  ) +
+  geom_sf(
+    data = water1,
+    inherit.aes = F,
+    color = "#D4AF37",
+    fill = "#D4AF37"
+
+  ) +
+  geom_text(
+    aes(y = 30.1110, x = -90.9855407),
+    label = "Mississippi River",
+    colour = "#FFFFFF",
+    fontface = "bold.italic",
+    family = "sans-serif",
+    size = 10
+  ) +
+
+  geom_sf(
+    data = water2 %>% filter(FULLNAME == "Byu Lafourche"),
+    inherit.aes = F,
+    color = "#D4AF37",
+    lwd = 8
+  ) +
+  geom_text(
+    aes(y = 30.0968, x = -91.012),
+    label =  "Bayou Lafourche",
+    colour = "#FFFFFF",
+    fontface = "bold.italic",
+    family = "sans-serif",
+    size = 7
+  ) +
+  geom_sf(
+    data = streets$osm_lines,
+    inherit.aes = FALSE,
+    color = "#CCCCCC",
+    size = .4,
+    alpha = .65
+  ) +
+  geom_sf(
+    data = highways$osm_lines,
+    inherit.aes = FALSE,
+    color = "#CCCCCC",
+    size = .6,
+    alpha = .65
+  ) +
+  geom_sf(
+    data = st_geometry(route),
+    inherit.aes = FALSE,
+    col = "#993333",
+    lwd = 2,
+    lty = "F1"
+  ) +
+  geom_richtext(
+    data = map_title,
+    aes(
+      y = 30.081,
+      x = -91.02500,
+      label = label
+    ),
+    colour = "#FFFFFF",
+    fill = NA,
+    label.color = NA,
+    hjust = 0
+  ) +
+  geom_richtext(
+    data = map_credit,
+    aes(
+      y = 30.074,
+      x = -91.02500,
+      label = label
+    ),
+    colour = "#FFFFFF",
+    fill = "#333333",
+    label.color = NA,
+    hjust = 0
+  ) +
+  coord_sf(
+    xlim = c(min(dbx[1,]), max(dbx[1,])),
+    ylim = c(min(dbx[2,]), max(dbx[2,])),
+  expand = FALSE
+  ) +
+  theme(legend.position = F) + theme_void() +
+  theme(panel.background = element_rect(fill = "#D4AF37"))
+
+ggsave(dville_map,
+       filename = "Day2-lines/day2_donaldsonville.png",
+       type = "cairo",
+       scale = 1,
+       width = 36,
+       height = 24,
+       units = "in",
+       dpi = 500)
+
