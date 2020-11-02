@@ -8,7 +8,7 @@ library(ggtext)
 
 loadfonts(device = "win")
 
-dbx <- getbb("Donaldsonville,LA")
+# dbx <- getbb("Donaldsonville,LA")
 
 min_lon <- -91.0395047
 max_lon <- -90.9625637
